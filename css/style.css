@@ -1,1 +1,174 @@
-/** Main Style **/
+/***  Main Style ***/
+
+:root {
+  /* primary */
+  --lime-green: hsl(163, 72%, 41%);
+  --bright-red: hsl(356, 69%, 56%);
+  --facebook: hsl(195, 100%, 50%);
+  --twitter: hsl(203, 89%, 53%);
+  --youtube: hsl(348, 97%, 39%);
+  --instagram: linear gradient hsl(37, 97%, 70%) to hsl(329, 70%, 58%);
+  --toggle-dark: linear gradient hsl(210, 78%, 56%) to hsl(146, 68%, 55%);
+  --toggle-light: hsl(230, 22%, 74%);
+
+  /* dark theme */
+  --dark-blue-bg: hsl(230, 17%, 14%);
+  --dark-blue-bg-pattern: hsl(232, 19%, 15%);
+  --dark-blue-card-bg: hsl(228, 28%, 20%);
+  --blue: hsl(228, 34%, 66%);
+  --white: hsl(0, 0%, 100%);
+
+  /* light theme */
+  --pale-blue: hsl(225, 100%, 98%);
+  --light-grey-blue-card: hsl(227, 47%, 96%);
+  --dark-grey-blue: hsl(228, 12%, 44%);
+  --dark-blue: hsl(230, 17%, 14%);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  background: var(--dark-blue-bg);
+}
+
+.main-container {
+  width: 100%;
+}
+
+header {
+  min-height: 240px;
+  background: var(--dark-blue-bg-pattern);
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 20px;
+}
+
+.wrapper,
+.cards-container {
+  max-width: 1115px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.cards-container {
+  position: relative;
+  top: -100px;
+  padding: 20px;
+}
+
+.top-title,
+.toggle {
+  display: inline-block;
+  width: 45%;
+  padding: 20px;
+}
+
+.top-title {
+  text-align: left;
+}
+
+.toggle {
+  text-align: right;
+}
+
+
+.top-title h1 {
+  color: var(--white);
+  font-weight: 700;
+  margin: 10px auto;
+}
+
+.overview h2 {
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.top-title span h3 {
+  color: var(--blue);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.top-cards,
+.bottom-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 25px;
+}
+
+.top-cards {
+  margin-bottom: 60px;
+}
+
+.social-card {
+  background: var(--dark-blue-card-bg);
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+}
+
+.social-card.facebook:hover,
+.social-card.twitter:hover,
+.social-card.youtube:hover {
+  cursor: pointer;
+  background: var(--blue);
+}
+
+.social-card.facebook {
+  border-top: 3px solid var(--facebook);
+}
+
+.social-card.twitter {
+  border-top: 3px solid var(--twitter);
+}
+
+.social-card.instagram {
+  border-top: 3px solid transparent;
+    border-radius: 5px;
+    background:
+        linear-gradient(to right, var(--dark-blue-card-bg), var(--dark-blue-card-bg)),
+        linear-gradient(60deg,hsl(37, 97%, 70%), hsl(329, 70%, 58%));
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+}
+
+.social-card.instagram:hover {
+  border-top: 3px solid transparent;
+  border-radius: 5px;
+  background:
+        linear-gradient(to right, var(--blue), var(--blue)),
+        linear-gradient(60deg,hsl(37, 97%, 70%), hsl(329, 70%, 58%));
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  cursor: pointer;
+}
+
+.social-card.youtube {
+  border-top: 3px solid var(--youtube);
+}
+
+@media all and (min-width: 375px) and (max-width: 767px) {
+
+}
+
+@media all and (min-width: 768px) {
+
+}
+
