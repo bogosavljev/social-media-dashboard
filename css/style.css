@@ -290,7 +290,7 @@ input:checked + .slider:before {
 .social-card.instagram .num h1,
 .social-card.youtube .num h1 {
   color: var(--white);
-  font-size: 72px;
+  font-size: 62px;
   font-weight: 700;
   font-family: 'Inter', sans-serif;
 }
@@ -304,6 +304,7 @@ input:checked + .slider:before {
   text-transform: uppercase;
   letter-spacing: 8px;
   margin-bottom: 20px;
+  font-size: 12px;
 }
 
 .social-card.stats {
