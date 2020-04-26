@@ -26,6 +26,16 @@
   --dark-blue: hsl(230, 17%, 14%);
 }
 
+/* light mode css variables */
+[data-theme="light"] {
+  --dark-blue-bg: hsl(0, 0%, 100%);
+  --dark-blue-bg-pattern: hsl(230, 75%, 98%);
+  --white: hsl(230, 17%, 14%);
+  --dark-blue-card-bg: hsl(227, 47%, 96%);
+  --dark-card-hover: hsl(232, 33%, 91%);
+  --blue:hsl(232, 6%, 47%);
+}
+
 html {
   box-sizing: border-box;
 }
@@ -140,7 +150,7 @@ input:checked + .slider {
 
 input:checked + .slider:before {
   transform: translateX(24px);
-  background-color: var(--white);
+  background-color: var(--dark-blue-card-bg);
   transition: .4s;
 }
 
@@ -155,7 +165,7 @@ input:checked + .slider:before {
 .top-section h1 {
   color: var(--white);
   font-weight: 700;
-  margin: 10px auto;
+  margin: 10px auto 5px auto;
 }
 
 .overview h2 {
