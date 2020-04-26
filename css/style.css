@@ -7,14 +7,15 @@
   --facebook: hsl(195, 100%, 50%);
   --twitter: hsl(203, 89%, 53%);
   --youtube: hsl(348, 97%, 39%);
-  --instagram: linear gradient hsl(37, 97%, 70%) to hsl(329, 70%, 58%);
-  --toggle-dark: linear gradient hsl(210, 78%, 56%) to hsl(146, 68%, 55%);
+  --instagram: linear-gradient(left, hsl(37, 97%, 70%) 0%, hsl(329, 70%, 58%), 100%);
+  --toggle-dark: linear-gradient(left, hsl(210, 78%, 56%) 0%, hsl(146, 68%, 55%) 100%);
   --toggle-light: hsl(230, 22%, 74%);
 
   /* dark theme */
   --dark-blue-bg: hsl(230, 17%, 14%);
   --dark-blue-bg-pattern: hsl(232, 19%, 15%);
   --dark-blue-card-bg: hsl(228, 28%, 20%);
+  --dark-card-hover: hsl(228, 26%, 27%);
   --blue: hsl(228, 34%, 66%);
   --white: hsl(0, 0%, 100%);
 
@@ -24,8 +25,6 @@
   --dark-grey-blue: hsl(228, 12%, 44%);
   --dark-blue: hsl(230, 17%, 14%);
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
 html {
   box-sizing: border-box;
@@ -65,29 +64,95 @@ header {
   width: 100%;
 }
 
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "left right";
+  align-items: center;
+}
+
 .cards-container {
   position: relative;
   top: -100px;
   padding: 20px;
 }
 
-.top-title,
-.toggle {
-  display: inline-block;
-  width: 45%;
+.top-section {
+  padding: 20px;
+  text-align: left;
+  grid-area: left;
+}
+
+.toggle-wrapper {
+  text-align: right;
+  grid-area: right;
   padding: 20px;
 }
 
-.top-title {
-  text-align: left;
+.toggle-wrapper .dark {
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 700;
+  padding-right: 5px;
 }
 
-.toggle {
-  text-align: right;
+.theme-switch {
+  display: inline-block;
+  height: 24px;
+  position: relative;
+  width: 50px;
+  vertical-align: middle;
 }
 
+.theme-switch input {
+  display: none;
+}
 
-.top-title h1 {
+.slider {
+  background-image: linear-gradient(left, hsl(210, 78%, 56%) 0%, hsl(146, 68%, 55%) 50%);
+  background-image: -webkit-linear-gradient(left, hsl(210, 78%, 56%) 0%, hsl(146, 68%, 55%) 100%);
+  background-image: -moz-linear-gradient(left, hsl(210, 78%, 56%) 0%, hsl(146, 68%, 55%) 100%);
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  background-color: var(--dark-blue-card-bg);
+  bottom: 2px;
+  content: "";
+  height: 20px;
+  left: 3px;
+  position: absolute;
+  transition: .4s;
+  width: 20px;
+}
+
+input:checked + .slider {
+  background-image: linear-gradient(left, hsl(210, 78%, 56%) 0%, hsl(146, 68%, 55%) 100%);
+  background-image: -webkit-linear-gradient(left, hsl(210, 78%, 56%) 0%, hsl(146, 68%, 55%) 100%);
+  background-image: -moz-linear-gradient(left, hsl(210, 78%, 56%) 0%, hsl(146, 68%, 55%) 100%);
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+  background-color: var(--white);
+  transition: .4s;
+}
+
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.top-section h1 {
   color: var(--white);
   font-weight: 700;
   margin: 10px auto;
@@ -99,7 +164,7 @@ header {
   margin-bottom: 20px;
 }
 
-.top-title span h3 {
+.top-section span h3 {
   color: var(--blue);
   font-weight: 700;
   font-size: 14px;
@@ -124,11 +189,9 @@ header {
   position: relative;
 }
 
-.social-card.facebook:hover,
-.social-card.twitter:hover,
-.social-card.youtube:hover {
+.social-card:hover {
   cursor: pointer;
-  background: var(--blue);
+  background: var(--dark-card-hover);
 }
 
 .social-card.facebook {
@@ -153,7 +216,7 @@ header {
   border-top: 3px solid transparent;
   border-radius: 5px;
   background:
-        linear-gradient(to right, var(--blue), var(--blue)),
+        linear-gradient(to right, var(--dark-card-hover), var(--dark-card-hover)),
         linear-gradient(60deg,hsl(37, 97%, 70%), hsl(329, 70%, 58%));
   background-clip: padding-box, border-box;
   background-origin: padding-box, border-box;
@@ -162,6 +225,118 @@ header {
 
 .social-card.youtube {
   border-top: 3px solid var(--youtube);
+}
+
+.social-card.facebook .icon-fb,
+.social-card.twitter .icon-tw,
+.social-card.instagram .icon-in,
+.social-card.youtube .icon-yt {
+  color: var(--blue);
+  font-weight: 700;
+  font-size: 14px;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.social-card.facebook .icon-fb svg,
+.social-card.twitter .icon-tw svg,
+.social-card.instagram .icon-in svg,
+.social-card.youtube .icon-yt svg {
+  vertical-align: bottom;
+  margin-right: 5px;
+}
+
+.social-card.facebook .icon-fb span,
+.social-card.twitter .icon-tw span,
+.social-card.instagram .icon-in span,
+.social-card.youtube .icon-yt span {
+  display: inline-block;
+}
+
+.social-card.facebook .today svg,
+.social-card.twitter .today svg,
+.social-card.instagram .today svg,
+.social-card.youtube .today svg {
+  margin-right: 3px;
+  vertical-align: middle;
+}
+
+.social-card.facebook .today span,
+.social-card.twitter .today span,
+.social-card.instagram .today span {
+  color: var(--lime-green);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.social-card.youtube .today span {
+  color: var(--bright-red);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.social-card.facebook .num h1,
+.social-card.twitter .num h1,
+.social-card.instagram .num h1,
+.social-card.youtube .num h1 {
+  color: var(--white);
+  font-size: 72px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+}
+
+.social-card.facebook .num .followers,
+.social-card.twitter .num .followers,
+.social-card.instagram .num .followers,
+.social-card.youtube .num .followers {
+  font-weight: 400;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  margin-bottom: 20px;
+}
+
+.social-card.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.social-card.stats span {
+  color: var(--blue);
+  font-weight: 700;
+  font-size: 14px;
+  text-align: left;
+}
+
+.social-card.stats .num {
+  color: var(--white);
+  font-size: 36px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.social-card.stats .icon {
+  text-align: right;
+}
+
+.social-card.stats .today {
+  text-align: right;
+  align-self: end;
+}
+
+.social-card.stats .today span {
+  color: var(--lime-green);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.social-card.stats .today span.down {
+  color: var(--bright-red);
+}
+
+.social-card.stats .today svg {
+  vertical-align: middle;
 }
 
 @media all and (min-width: 375px) and (max-width: 767px) {
